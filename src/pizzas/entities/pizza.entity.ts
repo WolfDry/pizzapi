@@ -1,20 +1,14 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, Index } from "typeorm"
 
-export enum PizzaFlavor{
-    TOMATOES = 'tomatoes',
-    CHEESE = 'cheese',
-    OLIVE = 'olive'
-}
+import { PizzaFlavor } from "../PizzaFlavor";
 
 @Entity()
 export class Pizza {
     @PrimaryGeneratedColumn()
     id!: number;
-
-    @Column({
-        length: 100,
-        unique: true
-    })
+    
+    @Index({unique: true})
+    @Column({length: 100})
     name!: string;
 
     @Column({type: 'enum', enum: PizzaFlavor})

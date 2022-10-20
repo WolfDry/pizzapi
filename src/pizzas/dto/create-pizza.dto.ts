@@ -1,4 +1,4 @@
-import { PizzaFlavor } from "../entities/pizza.entity";
+import { PizzaFlavor } from "../PizzaFlavor";
 
 export class CreatePizzaDto {
     name: string;
