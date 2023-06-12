@@ -1,28 +1,15 @@
-import { Entity, PrimaryGeneratedColumn, Column, Index } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, ChildEntity } from "typeorm"
 
 import { PizzaFlavor } from "../PizzaFlavor";
+import { ApiProperty } from "@nestjs/swagger";
+import { Recipe } from "./recipe.entity";
 
-@Entity()
-export class Pizza {
+@ChildEntity()
+export class Pizza extends Recipe {
+    @ApiProperty()
     @PrimaryGeneratedColumn()
     id!: number;
-    
-    @Index({unique: true})
-    @Column({length: 100})
-    name!: string;
 
-    @Column({type: 'enum', enum: PizzaFlavor})
+    @Column({ type: 'enum', enum: PizzaFlavor })
     flavor!: PizzaFlavor;
-
-    @Column({type: 'timestamp', default: () => 'current_timestamp'})
-    created!: Date;
-
-    @Column({default: false})
-    speciality!: boolean;
-
-    @Column()
-    price!: number;
-
-    @Column({nullable: true})
-    end?: Date;
 }
