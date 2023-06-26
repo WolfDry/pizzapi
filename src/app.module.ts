@@ -5,6 +5,7 @@ import { join } from 'path';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { PizzasModule } from './pizzas/pizzas.module';
+import { ChartModule } from './chart/chart.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { PizzasModule } from './pizzas/pizzas.module';
       ]
     }),
     PizzasModule,
+    ChartModule,
   ],
   controllers: [AppController],
   providers: [AppService],
